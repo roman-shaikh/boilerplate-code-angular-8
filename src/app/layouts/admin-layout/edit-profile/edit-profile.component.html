@@ -1,0 +1,95 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row mt-5">
+      <div class="col-md-8 ml-auto mr-auto">
+
+        <div class="card card-profile">
+
+          <div class="card-avatar">
+            <span class="profile_img">
+              <img src="{{userDetail?.profile_pic}}" (click)="file.click()" alt="Image" style="width:104px;height:104px"
+                class="img-circle" />
+              <input type="file" #file (change)="fileProgress($event)" accept="image/*" style="display:none">
+            </span>
+          </div>
+          <div class="card-body">
+            <h4 class="card-title">{{userName}}</h4>
+            <h5 class="card-category text-gray">{{userDetail?.email}}</h5>
+            <div class="col-md-12">
+              <div class="border_box border_none">
+                <form [formGroup]="editProfileForm" class="" (ngSubmit)="onSubmit()">
+                  <div class="textbox-full-width textbox-full-width-pb20">
+                    <mat-form-field>
+                      <mat-label>Name</mat-label>
+                      <input matInput id="user_name" name="user_name" formControlName="user_name">
+                    </mat-form-field>
+
+                    <mat-error class="text-left">
+                      Name is required
+                    </mat-error>
+                  </div>
+
+                  <div class="textbox-full-width textbox-full-width-pb20">
+                    <mat-form-field>
+                      <mat-label>Email</mat-label>
+                      <input matInput name="email" id="email" formControlName="email">
+                    </mat-form-field>
+                    <!-- <div *ngIf="(email.dirty || email.touched) && email.invalid" class="">
+                      <mat-error class="text-left" *ngIf="email.errors.required">
+                        Email is required
+                      </mat-error>
+                      <mat-error class="text-left" *ngIf="email.errors.pattern">
+                        Invalid Email
+                      </mat-error>
+                    </div> -->
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <!-- <div class="textbox-full-width textbox-full-width-pb20">
+                            <mat-form-field>
+                                <mat-label>Select Country</mat-label>
+                                <mat-select id="prefix_dialing" name="prefix_dialing" >
+                                  <mat-option *ngFor="let element of countryWithCode" [value]="element.prefix_dialing">
+                                    {{element.country_name}} ({{element.prefix_dialing}})
+                                  </mat-option>
+                                </mat-select>
+                              </mat-form-field>
+                             <mat-error class="text-left" *ngIf="(prefix_dialing.dirty || prefix_dialing.touched) && prefix_dialing.invalid">
+                                Country Name is required
+                            </mat-error> 
+                        </div> -->
+                    </div>
+                    <div class="col-md-6">
+                      <div class="textbox-full-width textbox-full-width-pb20">
+                        <mat-form-field>
+                          <mat-label>Mobile Number</mat-label>
+                          <input matInput id="mobile_number" type="text" name="mobile_number"
+                            formControlName="mobile_number">
+                        </mat-form-field>
+                        <!-- <div *ngIf="(mobile_number.touched) && mobile_number.invalid" class="">
+                            <mat-error class="text-left" *ngIf="mobile_number.invalid && !numberValidation">
+                              Number is required
+                            </mat-error>
+                            <mat-error class="text-left" *ngIf="numberValidation">
+                              Number Must be 7 Characters Long
+                            </mat-error>
+                          </div> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--button-->
+                  <span class="pull-right mb15">
+                    <button type="submit" data-toggle="modal" data-target="#ideal_profile" class="mr-2">Save</button>
+                    <button type="button" class="btn btn-danger" [routerLink]="['/dashboard']">Cancel</button>
+                  </span>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
